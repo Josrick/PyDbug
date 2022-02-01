@@ -1,0 +1,543 @@
+<CreateAccountWindow>:
+    name: "create"
+
+    nickname: nickname
+    schid: schid
+    password: passw
+
+    FloatLayout:
+        cols:1
+
+        FloatLayout:
+            size: root.width, root.height/2
+
+            Label:
+                markup: True
+                text: "[color=#839192][b]Create an Account[/b][/color]"
+                size_hint: 0.8, 0.2
+                pos_hint: {"x":0.1, "top":1}
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Label:
+                markup: True
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0, "top":0.8}
+                text: "[color=#F19A0A]NickName:[/color] "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.8}
+                size_hint: 0.4, 0.12
+                id: nickname
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Label:
+                markup: True
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0, "top":0.8-0.13}
+                text: "[color=#F19A0A]School ID:[/color] "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.8-0.13}
+                size_hint: 0.4, 0.12
+                id: schid
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Label:
+                markup: True
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0, "top":0.8-0.13*2}
+                text: "[color=#F19A0A]Password:[/color]  "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.8-0.13*2}
+                size_hint: 0.4, 0.12
+                id: passw
+                multiline: False
+                password: True
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+        Button:
+            markup: True
+            pos_hint:{"x":0.3,"y":0.25}
+            size_hint: 0.4, 0.1
+            font_size: (root.width**2 + root.height**2) / 17**4
+            text: "[color=#F19A0A][b]Already have an Account? Log In[/b][/color]"
+            on_release:
+                root.manager.transition.direction = "left"
+                root.login()
+
+        Button:
+            markup: True
+            pos_hint:{"x":0.2,"y":0.05}
+            size_hint: 0.6, 0.10
+            text: "[color=#F19A0A][b]Submit[/b][/color]"
+            font_size: (root.width**2 + root.height**2) / 14**4
+            on_release:
+                root.manager.transition.direction = "left"
+                root.submit()
+
+
+<LoginWindow>:
+    name: "login"
+
+    schid: schid
+    password: password
+
+    FloatLayout:
+
+        Label:
+            markup: True
+            text:"[color=#F19A0A][b]School ID:[/b][/color] "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x":0.1, "top":0.9}
+            size_hint: 0.27, 0.10
+
+        TextInput:
+            id: schid
+            font_size: (root.width**2 + root.height**2) / 13**4
+            multiline: False
+            pos_hint: {"x": 0.45 , "top":0.9}
+            size_hint: 0.4, 0.10
+
+        Label:
+            markup: True
+            text:"[color=#F19A0A][b]Password:[/b][/color]  "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x":0.1, "top":0.7}
+            size_hint: 0.27, 0.10
+
+        TextInput:
+            id: password
+            font_size: (root.width**2 + root.height**2) / 13**4
+            multiline: False
+            password: True
+            pos_hint: {"x": 0.45, "top":0.7}
+            size_hint: 0.4, 0.10
+
+        Button:
+            markup: True
+            pos_hint:{"x":0.2,"y":0.05}
+            size_hint: 0.6, 0.2
+            font_size: (root.width**2 + root.height**2) / 13**4
+            text: "[color=#F19A0A][b]Login[/b][/color]"
+            on_release:
+                root.manager.transition.direction = "up"
+                root.loginBtn()
+
+        Button:
+            markup: True
+            pos_hint:{"x":0.3,"y":0.3}
+            size_hint: 0.4, 0.1
+            font_size: (root.width**2 + root.height**2) / 17**4
+            text: "[color=#F19A0A][b]Don't have an Account? Create One[/b][/color]"
+            on_release:
+                root.manager.transition.direction = "right"
+                root.createBtn()
+
+
+<MainWindow>:
+
+    n: n
+    schid: schid
+    created:created
+
+    FloatLayout:
+
+        Label:
+            markup: True
+            id: n
+            pos_hint:{"x": 0.1, "top":0.9}
+            size_hint:0.8, 0.2
+            text:"[color=#F19A0A][b]Account NickName:[/b][/color] "
+
+        Label:
+            markup: True
+            id: schid
+            pos_hint:{"x": 0.1, "top":0.7}
+            size_hint:0.8, 0.2
+            text:"[color=#F19A0A][b]School ID:[/b][/color] "
+
+        Label:
+            markup: True
+            id: created
+            pos_hint:{"x": 0.1, "top":0.5}
+            size_hint:0.8, 0.2
+            text:"[color=#F19A0A][b]Created:[/b][/color] "
+
+        Button:
+            markup: True
+            pos_hint:{"x":0.1, "y": 0.1}
+            size_hint:0.2,0.1
+            text: "[color=#F19A0A][b]Log Out[/b][/color]"
+            on_release:
+                app.root.current = "login"
+                root.manager.transition.direction = "down"
+
+        Button:
+            markup: True
+            pos_hint:{"x":0.7, "y": 0.1}
+            size_hint:0.2,0.1
+            text: "[color=#F19A0A][b]Enter Game[/b][/color]"
+            on_release:
+                app.root.current = "menu"
+                root.manager.transition.direction = "right"
+
+
+
+
+<MenuWindow>:
+
+
+    FloatLayout:
+        cols:1
+
+        FloatLayout:
+            size: root.width, root.height/2
+
+            Label:
+                markup: True
+                text: "[color=#839192][b]Select The Game:[/b][/color]"
+                size_hint: 0.8, 0.2
+                pos_hint: {"x":0.1, "top":1}
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+
+        Button:
+            markup: True
+            pos_hint:{"x":0.4, "y": 0.6}
+            size_hint:0.2,0.1
+            text: "[color=#F19A0A][b]Game 1[/b][/color]"
+            on_release:
+                app.root.current = "gs1"
+                root.manager.transition.direction = "right"
+
+        Button:
+            markup: True
+            pos_hint:{"x":0.4, "y": 0.4}
+            size_hint:0.2,0.1
+            text: "[color=#F19A0A][b]Game 2[/b][/color]"
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+        Button:
+            markup: True
+            pos_hint:{"x":0.4, "y": 0.2}
+            size_hint:0.2,0.1
+            text: "[color=#F19A0A][b]Back[/b][/color]"
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+<Gamestart1Window>:
+
+
+    FloatLayout:
+
+        Button:
+            markup: True
+            pos_hint:{"x":0.4, "y": 0.4}
+            size_hint:0.2,0.1
+            text: "[color=#F19A0A][b]Ready[/b][/color]"
+            on_release:
+                app.root.current = "qsa"
+                root.manager.transition.direction = "right"
+
+
+<QuestionsaWindow>:
+    my_label: my_custom_label
+
+    FloatLayout:
+        cols:1
+
+        FloatLayout:
+            size: root.width, root.height/2
+
+            Label:
+                markup: True
+                text: "[color=#839192][b]Game#1-Q1-A:[/b][/color]"
+                size_hint: 0.1, 0.1
+                pos_hint: {"x":0.1, "top":1}
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+
+            Button:
+                markup: True
+                pos_hint:{"x":0.7, "y": 0.1}
+                size_hint:0.2,0.1
+                text: "[color=#F19A0A][b]B[/b][/color]"
+                on_release:
+                    app.root.current = "qsb"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                markup: True
+                pos_hint:{"x":0.1, "y": 0.1}
+                size_hint:0.2,0.1
+                text: "[color=#F19A0A][b]D[/b][/color]"
+                on_release:
+                    app.root.current = "qsd"
+                    root.manager.transition.direction = "left"
+
+            Button:
+                markup: True
+                pos_hint:{"x":0.3, "y": 0.1}
+                size_hint:0.2,0.1
+                text: "[color=#F19A0A][b]Select[/b][/color]"
+                on_release:
+                    app.root.current = "qsb"
+                    root.manager.transition.direction = "right"
+
+
+            Label:
+                markup: True
+                text: "[color=#F19A0A][b]TIME: [/b][/color]" + str(round(root.number))
+                size_hint: 0.2, 0.1
+                pos_hint: {"x":0.8, "top":1}
+
+
+            Button:
+                text: 'START'
+                on_press: root.do_action()
+                on_press: root.number = 0
+                pos_hint:{"x":0.5, "y": 0.1}
+                size_hint:0.2,0.1
+
+            Label:
+                id: my_custom_label
+                text: 'PRESS START TO SHOW THE CODE'
+                size_hint: 0.8, 0.2
+                pos_hint: {"x":0.1, "top":.9}
+
+
+
+<QuestionsbWindow>:
+    my_label: my_custom_label
+
+    FloatLayout:
+        cols:1
+
+        FloatLayout:
+            size: root.width, root.height/2
+
+            Label:
+                markup: True
+                text: "[color=#839192][b]Game#1-Q2-B:[/b][/color]"
+                size_hint: 0.1, 0.1
+                pos_hint: {"x":0.1, "top":1}
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Button:
+                markup: True
+                pos_hint:{"x":0.7, "y": 0.1}
+                size_hint:0.2,0.1
+                text: "[color=#F19A0A][b]C[/b][/color]"
+                on_release:
+                    app.root.current = "qsc"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                markup: True
+                pos_hint:{"x":0.1, "y": 0.1}
+                size_hint:0.2,0.1
+                text: "[color=#F19A0A][b]A[/b][/color]"
+                on_release:
+                    app.root.current = "qsa"
+                    root.manager.transition.direction = "left"
+
+            Button:
+                markup: True
+                pos_hint:{"x":0.3, "y": 0.1}
+                size_hint:0.2,0.1
+                text: "[color=#F19A0A][b]Select[/b][/color]"
+                on_release:
+                    app.root.current = "qsc"
+                    root.manager.transition.direction = "right"
+
+            Label:
+                markup: True
+                text: "[color=#F19A0A][b]TIME: [/b][/color]" + str(round(root.number))
+                size_hint: 0.2, 0.1
+                pos_hint: {"x":0.8, "top":1}
+
+            Button:
+                text: 'START'
+                on_press: root.do_action()
+                on_press: root.number = 0
+                pos_hint:{"x":0.5, "y": 0.1}
+                size_hint:0.2,0.1
+
+            Label:
+                id: my_custom_label
+                text: 'PRESS START TO SHOW THE CODE'
+                size_hint: 0.8, 0.2
+                pos_hint: {"x":0.1, "top":.9}
+
+
+
+<QuestionscWindow>:
+    my_label: my_custom_label
+
+    FloatLayout:
+        cols:1
+
+        FloatLayout:
+            size: root.width, root.height/2
+
+            Label:
+                markup: True
+                text: "[color=#839192][b]Game#1-Q3-C:[/b][/color]"
+                size_hint: 0.1, 0.1
+                pos_hint: {"x":0.1, "top":1}
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Button:
+                markup: True
+                pos_hint:{"x":0.7, "y": 0.1}
+                size_hint:0.2,0.1
+                text: "[color=#F19A0A][b]D[/b][/color]"
+                on_release:
+                    app.root.current = "qsd"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                markup: True
+                pos_hint:{"x":0.1, "y": 0.1}
+                size_hint:0.2,0.1
+                text: "[color=#F19A0A][b]B[/b][/color]"
+                on_release:
+                    app.root.current = "qsb"
+                    root.manager.transition.direction = "left"
+
+            Button:
+                markup: True
+                pos_hint:{"x":0.3, "y": 0.1}
+                size_hint:0.2,0.1
+                text: "[color=#F19A0A][b]Select[/b][/color]"
+                on_release:
+                    app.root.current = "qsd"
+                    root.manager.transition.direction = "right"
+            Label:
+                markup: True
+                text: "[color=#F19A0A][b]TIME: [/b][/color]" + str(round(root.number))
+                size_hint: 0.2, 0.1
+                pos_hint: {"x":0.8, "top":1}
+
+            Button:
+                text: 'START'
+                on_press: root.do_action()
+                on_press: root.number = 0
+                pos_hint:{"x":0.5, "y": 0.1}
+                size_hint:0.2,0.1
+
+            Label:
+                id: my_custom_label
+                text: 'PRESS START TO SHOW THE CODE'
+                size_hint: 0.8, 0.2
+                pos_hint: {"x":0.1, "top":.9}
+
+<QuestionsdWindow>:
+    my_label: my_custom_label
+
+    FloatLayout:
+        cols:1
+
+        FloatLayout:
+            size: root.width, root.height/2
+
+            Label:
+                markup: True
+                text: "[color=#839192][b]Game#1-Q4-D:[/b][/color]"
+                size_hint: 0.1, 0.1
+                pos_hint: {"x":0.1, "top":1}
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Button:
+                markup: True
+                pos_hint:{"x":0.7, "y": 0.1}
+                size_hint:0.2,0.1
+                text: "[color=#F19A0A][b]A[/b][/color]"
+                on_release:
+                    app.root.current = "qsa"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                markup: True
+                pos_hint:{"x":0.1, "y": 0.1}
+                size_hint:0.2,0.1
+                text: "[color=#F19A0A][b]C[/b][/color]"
+                on_release:
+                    app.root.current = "qsc"
+                    root.manager.transition.direction = "left"
+
+            Button:
+                markup: True
+                pos_hint:{"x":0.3, "y": 0.1}
+                size_hint:0.2,0.1
+                text: "[color=#F19A0A][b]Select[/b][/color]"
+                on_release:
+                    app.root.current = "fdw"
+                    root.manager.transition.direction = "right"
+
+            Label:
+                markup: True
+                text: "[color=#F19A0A][b]TIME: [/b][/color]" + str(round(root.number))
+                size_hint: 0.2, 0.1
+                pos_hint: {"x":0.8, "top":1}
+
+            Button:
+                text: 'START'
+                on_press: root.do_action()
+                on_press: root.number = 0
+                pos_hint:{"x":0.5, "y": 0.1}
+                size_hint:0.2,0.1
+
+            Label:
+                id: my_custom_label
+                text: 'PRESS START TO SHOW THE CODE'
+                size_hint: 0.8, 0.2
+                pos_hint: {"x":0.1, "top":.9}
+
+<FinishWindow>:
+
+
+    FloatLayout:
+        cols:1
+
+        FloatLayout:
+            size: root.width, root.height/2
+
+
+
+            Label:
+                markup: True
+                text: "[color=#F11D1D][b]Congratulations![/b][/color]"
+                size_hint: 0.8, 0.2
+                pos_hint: {"x":0.1, "top":1}
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+
+
+            Button:
+                markup: True
+                pos_hint:{"x":0.4, "y": 0.1}
+                size_hint:0.2,0.1
+                text: "[color=#F19A0A][b]Leaderboard[/b][/color]"
+                on_release:
+                    app.root.current = "login"
+                    root.manager.transition.direction = "right"
+
+
+            Button:
+                markup: True
+                pos_hint:{"x":0.1, "y": 0.1}
+                size_hint:0.2,0.1
+                text: "[color=#F19A0A][b]Quit[/b][/color]"
+                on_release:
+                    app.root.current = "login"
+                    root.manager.transition.direction = "right"
