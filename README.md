@@ -5,4 +5,4 @@ Adding some spice on debugging will attract the students and help them to be mor
 
 Students can now practice their debugging skills by playing this game. It is a web game that is accessible anytime and anywhere through the internet. By doing that, we can finally help the students to be more interested in programming and to be more passionate. 
 
-This Game Created by: Me: Josrick Menor , Xander Rosal , Jake Paraan , Adriel Macabio
+This Game Created by: Josrick Menor , Xander Rosal , Jake Paraan , Adriel Macabio
